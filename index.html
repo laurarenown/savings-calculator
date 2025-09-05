@@ -1,0 +1,153 @@
+<!-- MOBILE GROOMING SAVINGS CALCULATOR — Renown Cargo Trailers -->
+<div id="rct-calculator" style="max-width:840px;margin:24px auto;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0e1726;">
+  <div style="background:#0f172a;border-radius:14px;padding:18px 20px;color:#e2e8f0;">
+    <h2 style="margin:0 0 6px;font-size:24px;line-height:1.2;color:#fff;">💡 Ready to See the Numbers?</h2>
+    <p style="margin:0 0 12px;font-size:14px;color:#cbd5e1;">
+      Enter your current costs and get an instant estimate of how much you could save each year by going mobile.
+      <strong>No pressure. No obligation.</strong>
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px;">
+    <!-- Current Salon Costs -->
+    <section style="border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 10px;">
+      <h3 style="margin:0 0 8px;font-size:18px;">Your Current Monthly Salon Overhead</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+        <label style="display:flex;flex-direction:column;font-size:13px;">Rent ($/mo)
+          <input id="rent" type="number" min="0" step="1" value="2000" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:13px;">Utilities ($/mo)
+          <input id="utilities" type="number" min="0" step="1" value="300" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:13px;">Other Overhead ($/mo)
+          <input id="otherOverhead" type="number" min="0" step="1" value="200" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+      </div>
+    </section>
+
+    <!-- Mobile Monthly Costs -->
+    <section style="border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 10px;">
+      <h3 style="margin:0 0 8px;font-size:18px;">Estimated Monthly Mobile Costs</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+        <label style="display:flex;flex-direction:column;font-size:13px;">Trailer Payment ($/mo)
+          <input id="trailerPayment" type="number" min="0" step="1" value="650" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:13px;">Insurance ($/mo)
+          <input id="insurance" type="number" min="0" step="1" value="120" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:13px;">Fuel & Maintenance ($/mo)
+          <input id="fuel" type="number" min="0" step="1" value="250" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+      </div>
+    </section>
+
+    <!-- Advanced (optional) -->
+    <details id="advToggle" style="border:1px solid #e5e7eb;border-radius:12px;padding:14px;">
+      <summary style="cursor:pointer;font-weight:600;">Advanced (optional): Potential Revenue Boost</summary>
+      <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+        <label style="display:flex;flex-direction:column;font-size:13px;">Average Ticket ($)
+          <input id="avgTicket" type="number" min="0" step="1" value="85" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:13px;">Grooms / Week
+          <input id="groomsPerWeek" type="number" min="0" step="1" value="35" inputmode="numeric" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+        <label style="display:flex;flex-direction:column;font-size:13px;">Mobile Convenience Uplift (%)
+          <input id="upliftPct" type="number" min="0" max="100" step="1" value="20" inputmode="numeric" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+      </div>
+      <div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
+        <label style="display:flex;flex-direction:column;font-size:13px;">One-Time Startup Cost (wraps, tools, etc.) — optional
+          <input id="startupCost" type="number" min="0" step="1" value="0" inputmode="decimal" style="margin-top:6px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;">
+        </label>
+      </div>
+    </details>
+
+    <!-- Results -->
+    <section style="border:1px dashed #cbd5e1;border-radius:12px;padding:16px;background:#f8fafc;">
+      <h3 style="margin:0 0 10px;font-size:18px;">Your Estimated Impact</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#64748b;">Annual Overhead Savings</div>
+          <div id="annualSavings" style="font-weight:700;font-size:22px;margin-top:6px;">$0</div>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#64748b;">Annual Revenue Uplift (optional)</div>
+          <div id="annualUplift" style="font-weight:700;font-size:22px;margin-top:6px;">$0</div>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#64748b;">Total Annual Net Impact</div>
+          <div id="annualNet" style="font-weight:800;font-size:24px;color:#065f46;margin-top:6px;">$0</div>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#64748b;">Estimated Break-Even (if startup cost entered)</div>
+          <div id="breakeven" style="font-weight:700;font-size:22px;margin-top:6px;">—</div>
+        </div>
+      </div>
+      <p style="margin:12px 0 0;font-size:12px;color:#64748b;">
+        Estimates only. Actual results vary by route, pricing, and schedule.
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px;">
+      <a href="#contact" style="background:#0ea5e9;color:#fff;text-decoration:none;padding:12px 16px;border-radius:10px;font-weight:700;">Get My Free, No-Obligation Quote</a>
+      <a href="tel:8882873954" style="color:#0ea5e9;text-decoration:none;font-weight:600;">Or call 888-287-3954</a>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const $ = id => document.getElementById(id);
+      const fmt = n => n.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
+      const safe = v => isFinite(v) && v>0 ? v : 0;
+
+      const inputs = [
+        "rent","utilities","otherOverhead",
+        "trailerPayment","insurance","fuel",
+        "avgTicket","groomsPerWeek","upliftPct","startupCost"
+      ].map($);
+
+      function calc(){
+        const rent = safe(+$("rent").value);
+        const utilities = safe(+$("utilities").value);
+        const other = safe(+$("otherOverhead").value);
+
+        const trailerPay = safe(+$("trailerPayment").value);
+        const insurance = safe(+$("insurance").value);
+        const fuel = safe(+$("fuel").value);
+
+        // Annualize
+        const salonAnnual = (rent + utilities + other) * 12;
+        const mobileAnnual = (trailerPay + insurance + fuel) * 12;
+
+        const annualSavings = Math.max(0, salonAnnual - mobileAnnual);
+
+        // Optional uplift
+        const avgTicket = safe(+$("avgTicket").value);
+        const groomsPerWeek = safe(+$("groomsPerWeek").value);
+        const upliftPct = Math.min(100, safe(+$("upliftPct").value));
+        const annualUplift = (avgTicket * groomsPerWeek * 52) * (upliftPct/100);
+
+        const annualNet = annualSavings + annualUplift;
+
+        $("annualSavings").textContent = fmt(annualSavings);
+        $("annualUplift").textContent = fmt(annualUplift);
+        $("annualNet").textContent = fmt(annualNet);
+
+        // Break-even months (optional)
+        const startup = safe(+$("startupCost").value);
+        if(startup > 0 && annualNet > 0){
+          const months = Math.ceil(startup / (annualNet/12));
+          $("breakeven").textContent = months + " mo";
+        } else if (startup > 0 && annualNet === 0){
+          $("breakeven").textContent = "—";
+        } else {
+          $("breakeven").textContent = "—";
+        }
+      }
+
+      inputs.forEach(el => el.addEventListener("input", calc));
+      calc();
+    })();
+  </script>
+</div>
